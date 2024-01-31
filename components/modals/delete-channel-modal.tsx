@@ -13,7 +13,7 @@ import { useModal } from "@/app/hooks/use-modal-store";
 
 import { useState } from "react";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import qs from "query-string";
 
 export const DeleteChannelModal = () => {
@@ -36,9 +36,8 @@ export const DeleteChannelModal = () => {
         },
       });
       await axios.delete(url);
-      router.refresh();
       onClose();
-      router.push(`/servers/${server?.id}`);
+      router.refresh();
     } catch (error) {
       console.log(error);
     } finally {
