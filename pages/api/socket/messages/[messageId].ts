@@ -18,9 +18,8 @@ export default async function handler(
 
   try {
     if (!profile) return res.status(401).json("Unauthorized");
-    if (!serverId) return res.status(401).json("Server Id missing");
-    if (!channelId) return res.status(401).json("Channel Id missing");
-    if (!content) return res.status(401).json("Content is missing");
+    if (!serverId) return res.status(400).json("Server Id missing");
+    if (!channelId) return res.status(400).json("Channel Id missing");
 
     const server = await db.server.findFirst({
       where: {
