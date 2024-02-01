@@ -57,9 +57,11 @@ export const FileUpload = ({ onChange, value, endpoint }: IFileUpload) => {
         <a
           href={value}
           target="_blank"
-          rel="noopenner noreferrer"
+          rel="noopener noreferrer"
           className="mt-2 text-sm text-indigo-500 dark:text-indigo-400 hover:underline "
-        ></a>
+        >
+          {value}
+        </a>
         <button
           className="bg-rose-500 text-white p-1 rounded-full absolute -top-2 -right-2 shadow-sm"
           type="button"
