@@ -17,9 +17,9 @@ export default async function handler(
     const { serverId, channelId } = req.query;
 
     if (!profile) return res.status(401).json("Unauthorized");
-    if (!serverId) return res.status(401).json("Server Id missing");
-    if (!channelId) return res.status(401).json("Channel Id missing");
-    if (!content) return res.status(401).json("Content is missing");
+    if (!serverId) return res.status(400).json("Server Id missing");
+    if (!channelId) return res.status(400).json("Channel Id missing");
+    if (!content) return res.status(400).json("Content is missing");
 
     const server = await db.server.findFirst({
       where: {
@@ -68,7 +68,7 @@ export default async function handler(
       },
     });
 
-    const channelKey = `chat:${channelId}:message`;
+    const channelKey = `chat:${channelId}:messages`;
 
     res.socket.server.io.emit(channelKey, message);
     return res.status(200).json(message);
